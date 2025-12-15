@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatify - Transform Words into Music</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">🎵 Beatify</h1>
+            <p class="tagline">Transform any word into a unique musical experience</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Form Component -->
+            <section class="input-section" id="inputSection">
+                <div class="input-card">
+                    <h2>Enter Your Word</h2>
+                    <form id="generateForm">
+                        <div class="form-group">
+                            <input type="text" id="wordInput" placeholder="Enter any word or name..." maxlength="50"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="languageSelect">Language:</label>
+                            <select id="languageSelect">
+                                <option value="English">English</option>
+                                <option value="Spanish">Spanish</option>
+                                <option value="French">French</option>
+                                <option value="German">German</option>
+                                <option value="Italian">Italian</option>
+                                <option value="Japanese">Japanese</option>
+                                <option value="Korean">Korean</option>
+                                <option value="Chinese">Chinese</option>
+                                <option value="Hindi">Hindi</option>
+                                <option value="Tamil">Tamil</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-generate" id="generateBtn">
+                            <span class="btn-text">Generate Music</span>
+                            <span class="btn-loader" style="display: none;">🎵 Generating...</span>
+                        </button>
+                        <button type="button" class="btn-secondary" id="viewPlaylistsBtnMain">
+                            View Playlists
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Music Player Component -->
+            <section class="player-section" id="playerSection" style="display: none;">
+                <div class="player-card">
+                    <div class="track-info">
+                        <h2 id="trackTitle">Track Title</h2>
+                        <div class="track-metadata">
+                            <span class="badge" id="trackGenre">Genre</span>
+                            <span class="badge" id="trackMood">Mood</span>
+                        </div>
+                        <p class="track-style" id="trackStyle">Style description</p>
+                    </div>
+
+                    <div class="audio-player">
+                        <audio id="audioPlayer" controls controlsList="nodownload">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+
+                    <div class="lyrics-section" id="lyricsSection" style="display: none;">
+                        <h3>Lyrics</h3>
+                        <div class="lyrics-content" id="lyricsContent"></div>
+                    </div>
+
+                    <div class="track-details">
+                        <p><strong>Language:</strong> <span id="trackLanguage"></span></p>
+                        <p><strong>Duration:</strong> <span id="trackDuration"></span></p>
+                        <p><strong>Keyword:</strong> <span id="trackKeyword"></span></p>
+                    </div>
+
+                    <div class="action-group">
+                        <button class="c-btn c-btn--primary" id="addToPlaylistBtn"><span class="c-btn__text">Add to
+                                Playlist</span></button>
+                        <button class="c-btn c-btn--secondary" id="viewPlaylistsBtn"><span class="c-btn__text">View
+                                Playlists</span></button>
+                        <button class="c-btn c-btn--secondary" id="generateNewBtn"><span class="c-btn__text">Generate
+                                Another</span></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Display -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <p id="errorText"></p>
+                <button class="btn-close" onclick="hideError()">×</button>
+            </div>
+        </main>
+
+        <!-- Playlist Modal -->
+        <div class="modal" id="playlistModal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add to Playlist</h3>
+                    <button class="modal-close" id="closePlaylistModal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="playlistSelect">Select Playlist:</label>
+                        <select id="playlistSelect">
+                            <option value="">Create New Playlist</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="newPlaylistGroup" style="display: block;">
+                        <label for="newPlaylistName">New Playlist Name:</label>
+                        <input type="text" id="newPlaylistName" placeholder="Enter playlist name..." maxlength="50">
+                    </div>
+                    <button class="btn-primary" id="confirmAddToPlaylist">Add to Playlist</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Playlists Section -->
+        <section class="playlists-section" id="playlistsSection" style="display: none;">
+            <div class="playlists-card">
+                <h2>Your Playlists</h2>
+                <div class="playlists-list" id="playlistsList">
+                    <!-- Playlists will be populated here -->
+                </div>
+                <button class="btn-secondary" id="createPlaylistBtn">Create New Playlist</button>
+            </div>
+        </section>
+
+        <!-- Playlist View Modal -->
+        <div class="modal" id="playlistViewModal" style="display: none;">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3 id="playlistViewTitle">Playlist Name</h3>
+                    <button class="modal-close" id="closePlaylistViewModal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="playlist-tracks" id="playlistTracks">
+                        <!-- Playlist tracks will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by Perplexity AI & Free Audio APIs</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
