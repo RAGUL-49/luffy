@@ -313,9 +313,7 @@ MIT License - Free for personal and commercial use
 💬 Support
 Author: RAGUL N
 Email: ragul.naa@gmail.com
-
 GitHub: [@ragul-49](https://github.com/RAGUL-49)
-
 LinkedIn:[@ragul-49]https://www.linkedin.com/in/ragul49/
 Discord: Join community
 Made with ❤️ and Python by AI Developers
